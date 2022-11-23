@@ -1,7 +1,10 @@
 from selenium import webdriver
 
-phoneNumber = input("Enter phone number: ")
-message = input("Enter the message you want to send: ")
+
+def getInput():
+    phoneNumber = input("Enter phone number: ")
+    message = input("Enter the message you want to send: ")
+    browserStart(phoneNumber, message)
 
 
 def browserStart(phoneNumber, message):
@@ -10,4 +13,4 @@ def browserStart(phoneNumber, message):
                phoneNumber + "&text&type=phone_number&app_absent=0")
 
 
-browserStart(phoneNumber, message)
+getInput()
