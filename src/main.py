@@ -1,8 +1,12 @@
+from time import sleep
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+
+from xpath import xpathList
 
 
 def getInput():
@@ -25,21 +29,10 @@ def sendMessage(driver, message):
 
 
 def disconnect(driver):
-    WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located((
-            By.XPATH,
-            "//*[@id='app']/div/div/div[3]/header/div[2]/div/span/div[3]/div"
-        ))).click()
-    WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located((
-            By.XPATH,
-            "//*[@id='app']/div/div/div[3]/header/div[2]/div/span/div[3]/span/div/ul/li[4]/div"
-        ))).click()
-    WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located((
-            By.XPATH,
-            "//*[@id='app']/div/span[2]/div/div/div/div/div/div/div[3]/div/div[2]/div/div"
-        ))).click()
+    for path in xpathList():
+        sleep(0.5)
+        WebDriverWait(driver, 5).until(
+            EC.presence_of_element_located((By.XPATH, path))).click()
 
 
 getInput()
