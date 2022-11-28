@@ -21,7 +21,7 @@ def browserStart(phoneNumber, message):
 
 
 def sendMessage(driver, message):
-    WebDriverWait(driver, 20).until(
+    WebDriverWait(driver, 60).until(
         EC.presence_of_element_located((By.CLASS_NAME, "fd365im1"))).send_keys(message, Keys.ENTER)
     disconnect(driver)
 
